@@ -278,7 +278,7 @@ class EnergyMeter:
                         rbAct[3],
                         rbAct[2],
                     )
-                    self._energy_act = (struct.unpack(">I", rbAct)[0]) * 50
+                    self._energy_act = (struct.unpack(">I", rbAct)[0])
 
                     # Process reactive energy
                     rbReact = payload[9:13]
@@ -295,7 +295,7 @@ class EnergyMeter:
                         print(f"Ошибка чтения {param} - ответ короткий")
                         continue
 
-                    rbPower = (struct.unpack("<h", payload[2:4])[0] / 100) * 50
+                    rbPower = (struct.unpack("<h", payload[2:4])[0] / 100)
 
                     # Update the appropriate power property
                     power_mapping = {
@@ -339,7 +339,7 @@ class EnergyMeter:
                         print(f"Ошибка чтения {param} - ответ короткий")
                         continue
 
-                    rbCurrent = (struct.unpack("<h", payload[2:4])[0] / 1000) * 50
+                    rbCurrent = (struct.unpack("<h", payload[2:4])[0] / 1000)
 
                     if param == "CurrentL1":
                         self._currentL1 = rbCurrent
